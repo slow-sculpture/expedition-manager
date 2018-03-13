@@ -1,27 +1,31 @@
 package expedition.members;
 
 public class Climber extends Person {
-    private int highestPoint;
+    private int heightAchievement;
     private double stamina;
     private boolean oxygeneUser;
+    private double overallRating;
 
     public Climber(String firstName, String lastName, int age, String sex) {
         super(firstName, lastName, age, sex);
     }
 
-    public Climber(String firstName, String lastName, int age, String sex, int highestPoint, double conditionPoints, boolean oxygeneUser){
-        super(firstName,lastName,age,sex);
-        this.highestPoint=highestPoint;
-        this.stamina =conditionPoints;
-        this.oxygeneUser=oxygeneUser;
+    public Climber(String firstName, String lastName, int age, String sex
+            , int heightAchievement, double stamina, boolean oxygeneUser
+            , double overallRating) {
+        super(firstName, lastName, age, sex);
+        this.heightAchievement = heightAchievement;
+        this.stamina = stamina;
+        this.oxygeneUser = oxygeneUser;
+        this.overallRating = overallRating;
     }
 
-    public int getHighestPoint() {
-        return highestPoint;
+    public int getHeightAchievement() {
+        return heightAchievement;
     }
 
-    public void setHighestPoint(int highestPoint) {
-        this.highestPoint = highestPoint;
+    public void setHeightAchievement(int heightAchievement) {
+        this.heightAchievement = heightAchievement;
     }
 
     public double getStamina() {
@@ -40,9 +44,18 @@ public class Climber extends Person {
         this.oxygeneUser = oxygeneUser;
     }
 
+    public double getOverallRating() {
+        return overallRating;
+    }
+
+    public void setOverallRating(double overallRating) {
+        this.overallRating = overallRating;
+    }
+
     @Override
     public String toString(){
-        return String.format("%s / %d / %f / %b"
-                , super.toString(),getHighestPoint(),getStamina(),isOxygeneUser());
+        return String.format("%s / %d / %f / %b / %f"
+                , super.toString(), getHeightAchievement(), getStamina()
+                , isOxygeneUser(), getOverallRating());
     }
 }
