@@ -53,9 +53,9 @@ public class Climber extends Person {
     }
 
     @Override
-    public String toString(){
-        return String.format("%s / %d / %f / %b / %f"
-                , super.toString(), getHeightAchievement(), getStamina()
+    public String getDescription(){
+        return String.format("%s / height: %d / stamina: %f / oxygen: %b / rating: %f"
+                , super.getDescription(), getHeightAchievement(), getStamina()
                 , isOxygeneUser(), getOverallRating());
     }
 }

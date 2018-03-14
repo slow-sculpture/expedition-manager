@@ -12,47 +12,30 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
+    public static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
         System.out.println("Climb the hill !!!!\nwith our new expeditionManager v1 beta !!!\n");
 
-        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Give the name of your team:");
+
+        //System.out.println("Give the name of your team:");
         String name = scanner.nextLine();
         Team team = new Team(name);
 
 
-        System.out.println("What you want to do ?:");
-        printMenu();
-        int choice = scanner.nextInt();
-
         boolean exit = false;
         while (!exit) {
+            System.out.println("\nWhat you want to do ?:");
+            printMenu();
+            int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    System.out.println("Give data of a new member:");
-                    System.out.println("First name:");
-                    String firstName = scanner.nextLine();
-                    System.out.println("Last name:");
-                    String lastName = scanner.nextLine();
-                    System.out.println("Age:");
-                    int age = scanner.nextInt();
-                    System.out.println("Sex:");
-                    String sex = scanner.nextLine();
-
-                    Person newMember = new Climber(firstName, lastName, age, sex);
-                    team.addMember(newMember);
+                    addNewMember(team);
                     break;
 
                 case 2:
-                    System.out.println("Give path of your file: ");
-                    String path = scanner.nextLine();
-                    IFileReader reader = FileReaderFactory.createReader(path);
-                    List<Person> importedMembers = reader.read();
-                    for(Person p : importedMembers){
-                        team.addMember(p);
-                    }
-                    System.out.println("Import successful. All members added.");
+                    importFromFile(team);
 
                     break;
                 case 3:
@@ -74,12 +57,44 @@ public class App {
 
     }
 
+    private static void importFromFile(Team team) {
+        System.out.println("Precautions:\n1. Supported file format: *.csv *.txt" +
+                "\n2. Proper data type:\n    - first line - headers -> first name;last name;age;sex" +
+                "\n    - next lines - member data" +
+                "\n    - delimiters - ';'\n");
+
+        System.out.println("Give path of your file: ");
+        String path = scanner.next();
+        IFileReader reader = FileReaderFactory.createReader(path);
+        List<Person> importedMembers = reader.read();
+        for (Person p : importedMembers) {
+            team.addMember(p);
+        }
+        System.out.println("Import successful. All members added.");
+    }
+
+    private static void addNewMember(Team team) {
+        System.out.println("Give data of a new member:");
+
+        System.out.println("First name:");
+        String firstName = scanner.next();
+        System.out.println("Last name:");
+        String lastName = scanner.next();
+        System.out.println("Age:");
+        int age = scanner.nextInt();
+        System.out.println("Sex:");
+        String sex = scanner.next();
+
+        Person newMember = new Person(firstName, lastName, age, sex);
+        team.addMember(newMember);
+    }
+
     private static void printMenu() {
         // System.out.println("1. Create new team");
         System.out.println("1. Add new team member");
-        System.out.println("2. Add memebers from file");
-        System.out.println("3. Write team to file");
-        System.out.println("4. Print list of members");
+        System.out.println("2. Add members from file");
+        System.out.println("3. Write team members to file");
+        System.out.println("4. Print team members");
         System.out.println("0. Quit program");
 
     }

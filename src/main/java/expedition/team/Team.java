@@ -23,7 +23,7 @@ public class Team implements ITeam<Person>{
     @Override
     public void printTeamSquad(List<Person> team) {
         for(Person p : team){
-            System.out.println(p != null ? p.toString() : "Member list is empty !");
+            System.out.println(p != null ? p.getDescription() : "Member list is empty !");
         }
 
     }

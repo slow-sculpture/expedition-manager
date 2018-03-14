@@ -49,9 +49,9 @@ public class Person {
         this.sex = sex;
     }
 
-    @Override
-    public String toString(){
-        return String.format("Hi I am %s %s / %d / %s"
+
+    public String getDescription(){
+        return String.format("%s %s / age: %d / sex: %s"
                 , getFirstName(),getLastName(),getAge(),getSex());
     }
 }
