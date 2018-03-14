@@ -18,8 +18,7 @@ public class App {
         System.out.println("Climb the hill !!!!\nwith our new expeditionManager v1 beta !!!\n");
 
 
-
-        //System.out.println("Give the name of your team:");
+        System.out.println("Give the name of your team:");
         String name = scanner.nextLine();
         Team team = new Team(name);
 
@@ -57,20 +56,14 @@ public class App {
 
     }
 
-    private static void importFromFile(Team team) {
-        System.out.println("Precautions:\n1. Supported file format: *.csv *.txt" +
-                "\n2. Proper data type:\n    - first line - headers -> first name;last name;age;sex" +
-                "\n    - next lines - member data" +
-                "\n    - delimiters - ';'\n");
+    private static void printMenu() {
+        // System.out.println("1. Create new team");
+        System.out.println("1. Add new team member");
+        System.out.println("2. Add members from file");
+        System.out.println("3. Write team members to file");
+        System.out.println("4. Print team members");
+        System.out.println("0. Quit program");
 
-        System.out.println("Give path of your file: ");
-        String path = scanner.next();
-        IFileReader reader = FileReaderFactory.createReader(path);
-        List<Person> importedMembers = reader.read();
-        for (Person p : importedMembers) {
-            team.addMember(p);
-        }
-        System.out.println("Import successful. All members added.");
     }
 
     private static void addNewMember(Team team) {
@@ -89,13 +82,19 @@ public class App {
         team.addMember(newMember);
     }
 
-    private static void printMenu() {
-        // System.out.println("1. Create new team");
-        System.out.println("1. Add new team member");
-        System.out.println("2. Add members from file");
-        System.out.println("3. Write team members to file");
-        System.out.println("4. Print team members");
-        System.out.println("0. Quit program");
+    private static void importFromFile(Team team) {
+        System.out.println("Precautions:\n1. Supported file format: *.csv *.txt" +
+                "\n2. Proper data type:\n    - first line - headers -> first name;last name;age;sex" +
+                "\n    - next lines - member data" +
+                "\n    - delimiters - ';'\n");
 
+        System.out.println("Give the path of your file with file extension: ");
+        String path = scanner.next();
+        IFileReader reader = FileReaderFactory.createReader(path);
+        List<Person> importedMembers = reader.read();
+        for (Person p : importedMembers) {
+            team.addMember(p);
+        }
+        System.out.println("Import successful. All members added.");
     }
 }

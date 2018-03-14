@@ -51,7 +51,7 @@ public class Person {
 
 
     public String getDescription(){
-        return String.format("%s %s / age: %d / sex: %s"
+        return String.format("%s %s / %d / %s"
                 , getFirstName(),getLastName(),getAge(),getSex());
     }
 }
