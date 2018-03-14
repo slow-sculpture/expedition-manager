@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CsvFileReader implements IFileReader<Person> {
+public class TextFileReader implements IFileReader<Person> {
     private static final String SEPARATOR = ";";
     private String path;
 
-    public CsvFileReader(String path){
+    public TextFileReader(String path){
         this.path=path;
     }
 

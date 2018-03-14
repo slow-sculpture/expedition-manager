@@ -4,7 +4,7 @@ import expedition.members.Person;
 import expedition.team.Team;
 import expedition.utils.fileReader.FileReaderFactory;
 import expedition.utils.fileReader.IFileReader;
-import expedition.utils.fileWriter.CsvFileWriter;
+import expedition.utils.fileWriter.TextFileWriter;
 import expedition.utils.fileWriter.IFileWriter;
 
 import java.util.List;
@@ -101,11 +101,12 @@ public class App {
     }
 
     private static void exportToFile(Team team) {
+        System.out.println("Precautions:\n1. Supported file format: *.txt\n");
         System.out.println("Give the path of your file with file extension: ");
         String path = scanner.next();
-        IFileWriter writer = new CsvFileWriter(path);
+        IFileWriter writer = new TextFileWriter(path);
         writer.write(team.getTeamSquad());
         System.out.println("Export successful.\n");
-        return;
+
     }
 }

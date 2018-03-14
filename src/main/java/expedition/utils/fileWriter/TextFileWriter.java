@@ -7,10 +7,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-public class CsvFileWriter implements IFileWriter<Person> {
+public class TextFileWriter implements IFileWriter<Person> {
     private String path;
 
-    public CsvFileWriter(String path) {
+    public TextFileWriter(String path) {
         this.path = path;
     }
 
