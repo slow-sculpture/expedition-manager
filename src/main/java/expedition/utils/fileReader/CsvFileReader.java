@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CsvFileReader implements IFileReader {
+public class CsvFileReader implements IFileReader<Person> {
     private static final String SEPARATOR = ";";
     private String path;
 

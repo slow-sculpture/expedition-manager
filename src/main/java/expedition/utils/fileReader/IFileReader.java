@@ -5,6 +5,6 @@ import expedition.members.Person;
 import java.util.List;
 
 
-public interface IFileReader {
-    List<Person> read();
+public interface IFileReader<E> {
+    List<E> read();
 }

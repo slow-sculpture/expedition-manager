@@ -1,12 +1,11 @@
 package expedition;
 
-import expedition.members.Climber;
-
 import expedition.members.Person;
-
 import expedition.team.Team;
 import expedition.utils.fileReader.FileReaderFactory;
 import expedition.utils.fileReader.IFileReader;
+import expedition.utils.fileWriter.CsvFileWriter;
+import expedition.utils.fileWriter.IFileWriter;
 
 import java.util.List;
 import java.util.Scanner;
@@ -25,8 +24,9 @@ public class App {
 
         boolean exit = false;
         while (!exit) {
-            System.out.println("\nWhat you want to do ?:");
             printMenu();
+            System.out.println("\nWhat you want to do ?:");
+
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
@@ -35,10 +35,9 @@ public class App {
 
                 case 2:
                     importFromFile(team);
-
                     break;
                 case 3:
-
+                    exportToFile(team);
                     break;
                 case 4:
                     team.printTeamSquad(team.getTeamSquad());
@@ -56,11 +55,13 @@ public class App {
 
     }
 
+
+
     private static void printMenu() {
         // System.out.println("1. Create new team");
-        System.out.println("1. Add new team member");
-        System.out.println("2. Add members from file");
-        System.out.println("3. Write team members to file");
+        System.out.println("\n1. Add new team member");
+        System.out.println("2. Import members from file");
+        System.out.println("3. Export members to file");
         System.out.println("4. Print team members");
         System.out.println("0. Quit program");
 
@@ -77,6 +78,7 @@ public class App {
         int age = scanner.nextInt();
         System.out.println("Sex:");
         String sex = scanner.next();
+        System.out.println("Adding successful.\n");
 
         Person newMember = new Person(firstName, lastName, age, sex);
         team.addMember(newMember);
@@ -95,6 +97,15 @@ public class App {
         for (Person p : importedMembers) {
             team.addMember(p);
         }
-        System.out.println("Import successful. All members added.");
+        System.out.println("Import successful. All members added.\n");
+    }
+
+    private static void exportToFile(Team team) {
+        System.out.println("Give the path of your file with file extension: ");
+        String path = scanner.next();
+        IFileWriter writer = new CsvFileWriter(path);
+        writer.write(team.getTeamSquad());
+        System.out.println("Export successful.\n");
+        return;
     }
 }
