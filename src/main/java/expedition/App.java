@@ -85,21 +85,8 @@ public class App {
             team.addMember(newMember);
             System.out.println("Adding successful.\n");
         }
-
-        /*System.out.println("First name:");
-        String firstName = scanner.next();
-        System.out.println("Last name:");
-        String lastName = scanner.next();
-        System.out.println("Age:");
-        int age = scanner.nextInt();
-        System.out.println("Sex:");
-        String sex = scanner.next();*/
-
-
-
-       /* Person newMember = new Person(firstName, lastName, age, sex);
-        team.addMember(newMember);*/
     }
+
 
     private static void importFromFile(Team team) {
         System.out.println("Precautions:\n1. Supported file format: *.csv *.txt" +
