@@ -1,5 +1,6 @@
 package expedition;
 
+import expedition.members.MemberCreatorFactory;
 import expedition.members.Person;
 import expedition.team.Team;
 import expedition.utils.fileReader.FileReaderFactory;
@@ -7,6 +8,7 @@ import expedition.utils.fileReader.IFileReader;
 import expedition.utils.fileWriter.TextFileWriter;
 import expedition.utils.fileWriter.IFileWriter;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -56,7 +58,6 @@ public class App {
     }
 
 
-
     private static void printMenu() {
         // System.out.println("1. Create new team");
         System.out.println("\n1. Add new team member");
@@ -68,20 +69,36 @@ public class App {
     }
 
     private static void addNewMember(Team team) {
-        System.out.println("Give data of a new member:");
 
-        System.out.println("First name:");
+
+        System.out.println("What is the profession of a new member?");
+        System.out.println("Tap 'c' for Climber, 's' for Sherpa, 'm' for Medical or 'k' for Cook");
+        String key = scanner.next();
+        if (!(key.equalsIgnoreCase(("c"))
+                || (key.equalsIgnoreCase("s"))
+                || (key.equalsIgnoreCase("m"))
+                || (key.equalsIgnoreCase("k")))) {
+            System.out.println("Wrong input given. Exiting creator...");
+
+        } else {
+            Person newMember = MemberCreatorFactory.createMember(key);
+            team.addMember(newMember);
+            System.out.println("Adding successful.\n");
+        }
+
+        /*System.out.println("First name:");
         String firstName = scanner.next();
         System.out.println("Last name:");
         String lastName = scanner.next();
         System.out.println("Age:");
         int age = scanner.nextInt();
         System.out.println("Sex:");
-        String sex = scanner.next();
-        System.out.println("Adding successful.\n");
+        String sex = scanner.next();*/
 
-        Person newMember = new Person(firstName, lastName, age, sex);
-        team.addMember(newMember);
+
+
+       /* Person newMember = new Person(firstName, lastName, age, sex);
+        team.addMember(newMember);*/
     }
 
     private static void importFromFile(Team team) {
