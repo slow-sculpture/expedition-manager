@@ -33,11 +33,11 @@ public class MemberCreatorFactory {
             return new Climber(firstName, lastName, age, sex
                     , height, stamina, o2, rating);
         } else if (key.equalsIgnoreCase("s")) {
-            return null;
+            return new Sherpa(firstName,lastName,age,sex);
         } else if (key.equalsIgnoreCase("m")) {
-            return null;
+            return new Medical(firstName,lastName,age,sex);
         } else  {
-            return null;
+            return new Cook(firstName,lastName,age,sex);
                 }
     }
 }
