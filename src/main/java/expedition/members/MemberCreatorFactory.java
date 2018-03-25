@@ -23,21 +23,38 @@ public class MemberCreatorFactory {
         if (key.equalsIgnoreCase("c")) {
             System.out.println("The biggest height achievement:");
             int height = scanner.nextInt();
-            System.out.println("Stamina points");
+            System.out.println("Stamina points:");
             double stamina = scanner.nextDouble();
             System.out.println("Uses oxygen on big heights\n\ttrue/false ?");
             boolean o2 = scanner.nextBoolean();
-            System.out.println("Overall rating");
+            System.out.println("Overall rating:");
             double rating = scanner.nextDouble();
 
             return new Climber(firstName, lastName, age, sex
                     , height, stamina, o2, rating);
         } else if (key.equalsIgnoreCase("s")) {
-            return new Sherpa(firstName,lastName,age,sex);
+            System.out.println("Stamina points:");
+            double stamina=scanner.nextDouble();
+            System.out.println("Capacity [kg]:");
+            int capacity=scanner.nextInt();
+            System.out.println("Has yak\n\ttrue/false ?");
+            boolean hasYak=scanner.nextBoolean();
+            System.out.println("Yak capacity:");
+            int yakCapacity=scanner.nextInt();
+//spr czy ma yaka
+            return new Sherpa(firstName,lastName,age,sex
+                    ,stamina,capacity,hasYak,yakCapacity);
         } else if (key.equalsIgnoreCase("m")) {
+            System.out.println("Medicine specialization?");
+            String specialization = scanner.next();
+            //wiecej pol plus konstruktor
             return new Medical(firstName,lastName,age,sex);
         } else  {
-            return new Cook(firstName,lastName,age,sex);
+            System.out.println("Cuisine:");
+            String cuisine = scanner.next();
+            System.out.println("Chef's specialty:");
+            String specialty = scanner.next();
+            return new Cook(firstName,lastName,age,sex, cuisine,specialty);
                 }
     }
 }

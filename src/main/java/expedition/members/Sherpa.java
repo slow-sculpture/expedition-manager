@@ -13,6 +13,14 @@ public class Sherpa extends Person {
         super(firstName, lastName, age, sex);
     }
 
+    public Sherpa(String firstName, String lastName, int age, String sex, double stamina, int capacity, boolean yakOwner, int yakCapacity) {
+        super(firstName, lastName, age, sex);
+        this.stamina = stamina;
+        this.capacity = capacity;
+        this.yakOwner = yakOwner;
+        this.yakCapacity = yakCapacity;
+    }
+
     public double getStamina() {
         return stamina;
     }
