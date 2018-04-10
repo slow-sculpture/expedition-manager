@@ -34,28 +34,30 @@ public class MemberCreatorFactory {
                     , height, stamina, o2, rating);
         } else if (key.equalsIgnoreCase("s")) {
             System.out.println("Stamina points:");
-            double stamina=scanner.nextDouble();
+            double stamina = scanner.nextDouble();
             System.out.println("Capacity [kg]:");
-            int capacity=scanner.nextInt();
+            int capacity = scanner.nextInt();
             System.out.println("Has yak\n\ttrue/false ?");
-            boolean hasYak=scanner.nextBoolean();
-            System.out.println("Yak capacity:");
-            int yakCapacity=scanner.nextInt();
-//spr czy ma yaka
-            return new Sherpa(firstName,lastName,age,sex
-                    ,stamina,capacity,hasYak,yakCapacity);
+            boolean hasYak = scanner.nextBoolean();
+
+            if (hasYak) {
+                System.out.println("Yak capacity:");
+                int yakCapacity = scanner.nextInt();
+                return new Sherpa(firstName, lastName, age, sex
+                        , stamina, capacity, hasYak, yakCapacity);
+            } else return new Sherpa(firstName, lastName, age, sex, stamina, capacity);
+
         } else if (key.equalsIgnoreCase("m")) {
             System.out.println("Medicine specialization?");
             String specialization = scanner.next();
-            //wiecej pol plus konstruktor
-            return new Medical(firstName,lastName,age,sex);
-        } else  {
+            return new Medical(firstName, lastName, age, sex, specialization);
+        } else {
             System.out.println("Cuisine:");
             String cuisine = scanner.next();
             System.out.println("Chef's specialty:");
             String specialty = scanner.next();
-            return new Cook(firstName,lastName,age,sex, cuisine,specialty);
-                }
+            return new Cook(firstName, lastName, age, sex, cuisine, specialty);
+        }
     }
 }
 

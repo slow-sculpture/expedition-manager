@@ -5,12 +5,6 @@ public class Cook extends Person {
     private String specialty;
 
 
-    public Cook() {
-    }
-
-    public Cook(String firstName, String lastName, int age, String sex) {
-        super(firstName, lastName, age, sex);
-    }
 
     public Cook(String firstName, String lastName, int age, String sex, String cuisine, String specialty) {
         super(firstName, lastName, age, sex);
@@ -32,5 +26,11 @@ public class Cook extends Person {
 
     public void setSpecialty(String specialty) {
         this.specialty = specialty;
+    }
+
+    @Override
+    public String getDescription(){
+        return String.format("%s / cuisine: %s / chef's specialty: %s"
+                , super.getDescription(), getCuisine(), getSpecialty());
     }
 }

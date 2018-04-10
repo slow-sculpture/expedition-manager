@@ -6,11 +6,11 @@ public class Sherpa extends Person {
     private boolean yakOwner;
     private int yakCapacity;
 
-    public Sherpa() {
-    }
 
-    public Sherpa(String firstName, String lastName, int age, String sex) {
+    public Sherpa(String firstName, String lastName, int age, String sex, double stamina, int capacity) {
         super(firstName, lastName, age, sex);
+        this.stamina=stamina;
+        this.capacity=capacity;
     }
 
     public Sherpa(String firstName, String lastName, int age, String sex, double stamina, int capacity, boolean yakOwner, int yakCapacity) {
@@ -47,5 +47,11 @@ public class Sherpa extends Person {
 
     public void setYakCapacity(int yakCapacity) {
         this.yakCapacity = yakCapacity;
+    }
+
+    @Override
+    public String getDescription(){
+        return String.format("%s / stamina: %f / capacity: %d / has yak: %b / yak capacity: %d"
+                , super.getDescription(), getStamina(), getCapacity(), isYakOwner(), getYakCapacity());
     }
 }

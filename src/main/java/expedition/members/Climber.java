@@ -6,13 +6,6 @@ public class Climber extends Person {
     private boolean oxygeneUser;
     private double overallRating;
 
-    public Climber() {
-    }
-
-    public Climber(String firstName, String lastName, int age, String sex) {
-        super(firstName, lastName, age, sex);
-    }
-
     public Climber(String firstName, String lastName, int age, String sex
             , int heightAchievement, double stamina, boolean oxygeneUser
             , double overallRating) {
