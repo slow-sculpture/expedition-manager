@@ -1,6 +1,7 @@
 package expedition.user;
 
-import main.java.expedition.utils.hibernate.HibernateUtil;
+
+import expedition.utils.hibernate.HibernateUtil;
 import org.hibernate.Session;
 
 public class UserRepo {
