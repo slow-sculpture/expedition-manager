@@ -2,10 +2,19 @@ package expedition.team;
 
 import expedition.members.Person;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Team implements ITeam<Person>{
+@Entity
+public class Team implements ITeam<Person>, Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
     private String name;
     private List<Person> teamSquad;
 
