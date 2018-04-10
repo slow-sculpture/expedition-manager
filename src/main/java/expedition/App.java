@@ -3,12 +3,14 @@ package expedition;
 import expedition.members.MemberCreatorFactory;
 import expedition.members.Person;
 import expedition.team.Team;
+import expedition.team.TeamRepo;
+import expedition.user.User;
+import expedition.user.UserRepo;
 import expedition.utils.fileReader.FileReaderFactory;
 import expedition.utils.fileReader.IFileReader;
 import expedition.utils.fileWriter.TextFileWriter;
 import expedition.utils.fileWriter.IFileWriter;
 
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,10 +20,13 @@ public class App {
     public static void main(String[] args) {
         System.out.println("Climb the hill !!!!\nwith our new expeditionManager v1 beta !!!\n");
 
+        register();
+
 
         System.out.println("Give the name of your team:");
         String name = scanner.nextLine();
         Team team = new Team(name);
+        TeamRepo.save(team);
 
 
         boolean exit = false;
@@ -55,6 +60,21 @@ public class App {
 
         }
 
+    }
+
+    private static void register() {
+        System.out.println("Please register");
+        System.out.println("First name:");
+        String firstName = scanner.next();
+        System.out.println("Last name:");
+        String lastName = scanner.next();
+        System.out.println("Email: ");
+        String email = scanner.next();
+        System.out.println("Password:");
+        String pwd = scanner.next();
+        User user = new User(email,pwd,firstName,lastName);
+        UserRepo.save(user);
+        System.out.println("Log in successful");
     }
 
 
