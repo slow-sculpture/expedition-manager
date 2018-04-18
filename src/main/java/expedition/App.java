@@ -20,13 +20,15 @@ public class App {
     public static void main(String[] args) {
         System.out.println("Climb the hill !!!!\nwith our new expeditionManager v1 beta !!!\n");
 
-        register();
+        //TODO connection with db via hibernate
+        //register();
 
 
         System.out.println("Give the name of your team:");
         String name = scanner.nextLine();
         Team team = new Team(name);
-        TeamRepo.save(team);
+        //TODO connection to db
+        //TeamRepo.save(team);
 
 
         boolean exit = false;
@@ -62,7 +64,7 @@ public class App {
 
     }
 
-    private static void register() {
+/*    private static void register() {
         System.out.println("Please register");
         System.out.println("First name:");
         String firstName = scanner.next();
@@ -75,7 +77,7 @@ public class App {
         User user = new User(email,pwd,firstName,lastName);
         UserRepo.save(user);
         System.out.println("Log in successful");
-    }
+    }*/
 
 
     private static void printMenu() {

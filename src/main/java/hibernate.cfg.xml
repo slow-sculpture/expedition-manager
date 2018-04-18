@@ -4,7 +4,7 @@
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL55Dialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jjdbc:mysql://localhost/expedition</property>
+        <property name="hibernate.connection.url">jjdbc:mysql://localhost:3306/exp</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">09meta09</property>
    <!--     <property name="hibernate.connection.url">jjdbc:mysql://db4free.net:3306/expeditiondb</property>
